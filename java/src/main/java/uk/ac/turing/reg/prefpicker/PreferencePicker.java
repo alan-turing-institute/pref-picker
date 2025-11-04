@@ -1,16 +1,16 @@
 package uk.ac.turing.reg.prefpicker;
 
-public class Greeting {
+public class PreferencePicker {
 
-    private long id;
+    private String name;
     private String content;
 
-    public long getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getContent() {
