@@ -6,6 +6,7 @@ A comparison between three ways of building a web-app
 How to run it:
 
 ```
+uv sync
 source .venv/bin/activate 
 streamlit run pref_picker.py
 ```
