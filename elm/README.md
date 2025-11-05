@@ -12,3 +12,7 @@ elm make --output=main.js src/Main.elm
 ```
 
 Then open `start.html` in a web browser.
+
+Altnernatively, go to
+`https://alan-turing-institute.github.io/pref-picker/elm/start.html`.
+
