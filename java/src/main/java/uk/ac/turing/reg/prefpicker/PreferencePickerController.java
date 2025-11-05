@@ -43,11 +43,10 @@ public class PreferencePickerController {
         List<String> randomisedOptions = Arrays.asList(options);
         Collections.shuffle(randomisedOptions);
 
-        PreferencePicker preferencePicker = new PreferencePicker();
         model.addAttribute("firstOption", randomisedOptions.get(0));
         model.addAttribute("secondOption", randomisedOptions.get(1));
 
-        model.addAttribute("preferencePicker", preferencePicker);
+        model.addAttribute("preferencePicker", new PreferencePicker());
 
         return "preferencePicker";
     }
