@@ -3,18 +3,22 @@
 <head>
     <title>Preference Picker</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
 </head>
 <body>
-<h1>Preference Picker</h1>
+<h2>Preference Picker</h2>
 <form action="#" th:action="@{/preferencePicker}" th:object="${preferencePicker}" method="post">
+    <input type="hidden" name="firstOption"  th:value="${firstOption}">
+    <input type="hidden" name="secondOption" th:value="${secondOption}">
+
     <p>Enter your name: <input type="text" th:field="*{name}" /></p>
     <p>
-        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${preferencePicker.firstOption}" />
-        <label th:for="${preferencePicker.optionSelected}" th:text="${preferencePicker.firstOption}"></label>
+        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${firstOption}" />
+        <label th:for="${preferencePicker.optionSelected}" th:text="${firstOption}"></label>
     </p>
     <p>
-        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${preferencePicker.secondOption}" />
-        <label th:for="${preferencePicker.optionSelected}" th:text="${preferencePicker.secondOption}"></label>
+        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${secondOption}" />
+        <label th:for="${preferencePicker.optionSelected}" th:text="${secondOption}"></label>
     </p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
