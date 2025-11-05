@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -42,8 +44,8 @@ public class PreferencePickerController {
         Collections.shuffle(randomisedOptions);
 
         PreferencePicker preferencePicker = new PreferencePicker();
-        preferencePicker.setFirstOption(randomisedOptions.get(0));
-        preferencePicker.setSecondOption(randomisedOptions.get(1));
+        model.addAttribute("firstOption", randomisedOptions.get(0));
+        model.addAttribute("secondOption", randomisedOptions.get(1));
 
         model.addAttribute("preferencePicker", preferencePicker);
 
@@ -52,6 +54,15 @@ public class PreferencePickerController {
 
     @PostMapping("/preferencePicker")
     public String preferencePickerSubmit(@ModelAttribute PreferencePicker preferencePicker, Model model) {
+
+        String fileName = String.format("%s_preferences.csv", preferencePicker.getName());
+        try (FileWriter fileWriter = new FileWriter(fileName, true)) {
+            fileWriter.append(String.format("%s,%s,%s\n", preferencePicker.getFirstOption(),
+                    preferencePicker.getSecondOption(), preferencePicker.getOptionSelected()));
+        } catch (IOException exception) {
+            return "error";
+        }
+
         model.addAttribute("preferencePicker", preferencePicker);
         return "result";
     }
