@@ -2,25 +2,45 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
     <title>Preference Picker</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
+
 </head>
 <body>
-<h2>Preference Picker</h2>
-<form action="#" th:action="@{/preferencePicker}" th:object="${preferencePicker}" method="post">
-    <input type="hidden" name="firstOption"  th:value="${firstOption}">
-    <input type="hidden" name="secondOption" th:value="${secondOption}">
-
-    <p>Enter your name: <input type="text" th:field="*{name}" /></p>
-    <p>
-        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${firstOption}" />
-        <label th:for="${preferencePicker.optionSelected}" th:text="${firstOption}"></label>
-    </p>
-    <p>
-        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${secondOption}" />
-        <label th:for="${preferencePicker.optionSelected}" th:text="${secondOption}"></label>
-    </p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+<div class="jumbotron text-center">
+    <h1>Preference Picker</h1>
+    <p>Please select your preference:</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form action="#" th:action="@{/preferencePicker}" th:object="${preferencePicker}" method="post">
+                <input type="hidden" name="firstOption" th:value="${firstOption}">
+                <input type="hidden" name="secondOption" th:value="${secondOption}">
+                <div class="form-group">
+                    <label for="name">Enter your name: </label>
+                    <input id="name" type="text" th:field="*{name}" class="form-control"/>
+                </div>
+                <div class="form-check">
+                    <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${firstOption}"
+                           class="form-check-input"/>
+                    <label class="form-check-label" th:for="${firstOption}" th:text="${firstOption}"></label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${secondOption}"
+                           class="form-check-input"/>
+                    <label class="form-check-label" th:for="${secondOption}" th:text="${secondOption}"></label>
+                </div>
+                <div class="btn-group">
+                    <input type="submit" value="Submit" class="btn btn-default"/> <input type="reset" value="Reset"
+                                                                                         class="btn btn-default"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

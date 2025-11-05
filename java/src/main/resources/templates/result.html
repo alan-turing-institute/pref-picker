@@ -1,18 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" />
+    <title>Preference Picker</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}"/>
 </head>
 <body>
-<h2>Result</h2>
-<p th:text="'Name: ' + ${preferencePicker.name}"></p>
-<p>
-<strong th:text="'Option Selected: ' + ${preferencePicker.optionSelected}"></strong>
-</p>
-<p>
-<a href="/preferencePicker">Submit another message</a>
-</p>
+<div class="container-fluid">
+    <h1>Result</h1>
+    <p> Here's your selection</p>
+    <div class="row">
+        <div class="col-sm-4" style="background-color:lavender;"><p>Name:</p></div>
+        <div class="col-sm-8" style="background-color:lavenderblush;"><p th:text="${preferencePicker.name}"></p></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4" style="background-color:lavender;"><p>Option selected:</p></div>
+        <div class="col-sm-8" style="background-color:lavenderblush;"><p
+                th:text="${preferencePicker.optionSelected}"></p></div>
+    </div>
+    <p>
+        <a href="/preferencePicker">Submit another preference</a>
+    </p>
+</div>
 </body>
 </html>
