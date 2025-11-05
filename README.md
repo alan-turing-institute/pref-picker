@@ -1,2 +1,2 @@
 # Pref Picker
-A comparison between three ways of building a web-app
+Three ways of building a web-app
