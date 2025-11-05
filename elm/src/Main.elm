@@ -4,6 +4,8 @@ import Browser
 import Html exposing (Html, h1, button, div, text)
 import Html.Events exposing (onClick)
 
+import File.Download 
+
 import List exposing (length, map)
 import Tuple exposing (first, second)
 
@@ -49,6 +51,10 @@ pickTwoChoices =
         (\xs -> NewChoices (getChoices (first xs)))
         (Random.List.choices 2 theOptions)
 
+save : List (String, String) -> Cmd Msg
+save cs =
+    File.Download.string "chosen.txt" "text/plain" (chosenToString cs) 
+            
             
 {-- App --}
               
@@ -57,7 +63,7 @@ type alias Model =
      chosen  : List (String, String)   --- Previous user choices 
     }
 
-type Msg = Left | Right | NewChoices (String, String)
+type Msg = Left | Right | NewChoices (String, String) | Save
 
 
 main =
@@ -79,7 +85,7 @@ update msg model =
          Left ->  ({ model | chosen = model.choices :: model.chosen }, pickTwoChoices )
          Right -> ({ model | chosen = (swap model.choices) :: model.chosen }, pickTwoChoices )
          NewChoices cs -> ({ model | choices = cs }, Cmd.none)
-
+         Save -> (model, save model.chosen)
         
 subscriptions : Model -> Sub Msg
 subscriptions _ =
@@ -94,7 +100,8 @@ view model =
          button [ onClick Left ] [ text (first choices) ],
          text " ",
          button [ onClick Right ] [ text (second choices) ],
-         div [] [ text (chosenToString chosen) ]
+         div [] [ text (chosenToString chosen) ],
+         button [ onClick Save ] [ text "Save" ]
         ]
 
             
