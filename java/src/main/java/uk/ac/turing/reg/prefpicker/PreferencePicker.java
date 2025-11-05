@@ -3,7 +3,9 @@ package uk.ac.turing.reg.prefpicker;
 public class PreferencePicker {
 
     private String name;
-    private String content;
+    private String optionSelected;
+    private String firstOption;
+    private String secondOption;
 
     public String getName() {
         return name;
@@ -13,12 +15,27 @@ public class PreferencePicker {
         this.name = name;
     }
 
-    public String getContent() {
-        return content;
+    public String getOptionSelected() {
+        return optionSelected;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setOptionSelected(String optionSelected) {
+        this.optionSelected = optionSelected;
     }
 
+    public String getFirstOption() {
+        return firstOption;
+    }
+
+    public void setFirstOption(String firstOption) {
+        this.firstOption = firstOption;
+    }
+
+    public String getSecondOption() {
+        return secondOption;
+    }
+
+    public void setSecondOption(String secondOption) {
+        this.secondOption = secondOption;
+    }
 }

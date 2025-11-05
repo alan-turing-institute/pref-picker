@@ -8,7 +8,14 @@
 <h1>Preference Picker</h1>
 <form action="#" th:action="@{/preferencePicker}" th:object="${preferencePicker}" method="post">
     <p>Enter your name: <input type="text" th:field="*{name}" /></p>
-    <p>Message: <input type="text" th:field="*{content}" /></p>
+    <p>
+        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${preferencePicker.firstOption}" />
+        <label th:for="${preferencePicker.optionSelected}" th:text="${preferencePicker.firstOption}"></label>
+    </p>
+    <p>
+        <input type="radio" th:field="${preferencePicker.optionSelected}" th:value="${preferencePicker.secondOption}" />
+        <label th:for="${preferencePicker.optionSelected}" th:text="${preferencePicker.secondOption}"></label>
+    </p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 </body>
